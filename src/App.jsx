@@ -30,15 +30,19 @@ const App = () => {
     const gameloop = () => {
       setBirdpos((prev) => {
         let newpos = prev + gravity; 
-        if (newpos > Game_height - bird_height) {
-          return Game_height;
-        }
-        if (newpos < 0) {
-          return 0;
-        }
-        return newpos;
-      });
-    };
+        const container = document.querySelector('main');
+      const containerHeight = container ? container.clientHeight : Game_height;
+      
+      // Check if bird hits bottom
+      if (newpos > containerHeight - bird_height) {
+        return containerHeight - bird_height;
+      }
+      if (newpos < 0) {
+        return 0;
+      }
+      return newpos;
+    });
+  };
     const interval = setInterval(gameloop, 30);
     return () => clearInterval(interval);
   }, []);
