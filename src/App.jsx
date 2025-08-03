@@ -46,7 +46,7 @@ const App = () => {
           return true;
         }
 
-        if (birdY + bird_height >= Game_height - pipe.bottomHeight) {
+        if (birdY + bird_height >= Game_height - pipe.bottomHeight + 25) {
           return true;
         }
       }
