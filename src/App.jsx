@@ -32,7 +32,7 @@ const App = () => {
   }, []);
 
   const checkCollision = useCallback((birdY, pipes) => {
-    if (birdY > Game_height - bird_height) {
+    if (birdY > Game_height - bird_height + 25) {
       return true;
     }
 
@@ -76,13 +76,14 @@ const App = () => {
           return prev;
         }
 
-        if (newpos > Game_height - bird_height) {
-          return Game_height - bird_height;
+        if (newpos > Game_height - bird_height + 25) {
+          return Game_height - bird_height + 25;
         }
         if (newpos < 0) {
           return 0;
         }
         return newpos;
+
       });
 
       setPipes((prevPipes) => {
